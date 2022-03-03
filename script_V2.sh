@@ -4,12 +4,12 @@ read resposta
 
 
 SNAP() {
-   sudo snap install $1 -y
+   sudo snap install $1
 }
 
 
 APT() {
-   sudo apt install $1 -y
+   sudo apt install $1
 }
 
 
@@ -34,19 +34,19 @@ EXTENSIONS_RST #restaura as extensões
 
 CONFIGS_UBUNTU #Restaurar atalhos de teclado,tamanho fonte, configurações terminal, etc
 
-SNAP vlc
-SNAP code --classic
-SNAP pomotroid
-SNAP discord
-SNAP telegram-desktop
-SNAP gnome-system-monitor
+SNAP vlc -y 
+SNAP code --classic -y
+SNAP pomotroid -y
+SNAP discord -y
+SNAP telegram-desktop -y
+SNAP gnome-system-monitor -y
 
-APT gparted
-APT obs-studio
-APT flameshot
-APT gnome-usage
-APT unrar
-APT google-chrome-stable
+APT gparted -y
+APT obs-studio -y
+APT flameshot -y
+APT gnome-usage -y
+APT unrar -y
+APT google-chrome-stable -y
 
 sudo add-apt-repository universe -y && APT gnome-tweak-tool
 
@@ -59,3 +59,13 @@ APT typora
 # .backup anki
 # .opção de exportar e importa confi ubuntu
 # .configuração intelijj e vscode e github
+#salvar o .bashrc da pasta pessoal
+#salvar o gitconfig da pasta pessoal
+#retirar os y
+#colocar typora como snap
+#colocar dash to dock
+#colocar tweak tool
+#colocar chrome
+#foxitReade
+#git
+#draw.Io ou whismical
