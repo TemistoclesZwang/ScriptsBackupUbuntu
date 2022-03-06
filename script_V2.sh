@@ -13,26 +13,27 @@ APT() {
 }
 
 
-#Utilize esse comando para exportar cd ~ dconf dump / > minhasSettings.dconf
-CONFIGS_UBUNTU (){ 
-   echo -e -n"\n\033[1;36mCertifique-se de que seu HD de backup \033[1;95mestá montado \033[1;32mOk?"
-   read resposta
+#comando para carregar dconf load / < /media/$USER/HD500/MagicRestaurador/minhasSettings.dconf
+COPIAR_GIT_BASH(){ #bash,git
    cd ~
-   dconf load / < /media/$USER/HD500/MagicRestaurador/minhasSettings.dconf
+   cp .bashrc Desktop/
+   cp .minhasSettings Desktop/
+   cp .profile Desktop/
+   cp .gitconfig Desktop/
+
+}
+COPIAR_DCONF(){ #dconf
+   cd ~
+   dconf dump / > minhasSettings.dconf
+   cp minhasSettings.dconf Desktop/
 }
 
-GIT_ALIAS_RST(){
-   #!digitar manualmente os comandos perdidos 
+EXTENSIONS(){ 
+   cd /home/temis_zwang/.local/share/gnome-shell
+   cp -r extensions/ Desktop/
 }
 
 
-EXTENSIONS_RST(){ 
-   cp /media/$USER/HD500/MagicRestaurador/extensions/ .local/share/gnome-shell/extensions/
-}
-
-EXTENSIONS_RST #restaura as extensões
-
-CONFIGS_UBUNTU #Restaurar atalhos de teclado,tamanho fonte, configurações terminal, etc
 
 SNAP vlc -y 
 SNAP code --classic -y
