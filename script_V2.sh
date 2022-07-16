@@ -1,5 +1,4 @@
 #!/bin/bash
-source interface.sh
 
 
 SNAP() {
@@ -13,13 +12,12 @@ APT() {
 
 BKP_EXTENSIONS_VSCODE (){
    cd ~
-   cp /home/temis_zwang/.vscode/extensions Desktop/
+   cp -r /home/$USER/.vscode/extensions Desktop/
 }
 
 BKP_GIT_AND_BASH(){ #bash,git,terminal
    cd ~
    cp .bashrc Desktop/
-   cp .minhasSettings Desktop/
    cp .profile Desktop/
    cp .gitconfig Desktop/
 
@@ -30,7 +28,7 @@ BKP_DCONF(){ #ubuntu user configs
    cp minhasSettings.dconf Desktop/
 }
 
-BKP_EXTENSIONS(){ 
+BKP_EXTENSIONS_UBUNTU(){ 
    cd /home/temis_zwang/.local/share/gnome-shell
    cp -r extensions/ Desktop/
 }
@@ -41,10 +39,12 @@ BKP_ANKI(){
 }
 
 BACKUPS_LOCAIS(){
+   BKP_DCONF
    BKP_EXTENSIONS_VSCODE
    BKP_GIT_AND_BASH
-   BKP_DCONF
-   BKP_EXTENSIONS
+   #BKP_EXTENSIONS_UBUNTU
+   #nao funciona pq o nome extensions é 
+   #igual da pasta do vscode
    BKP_ANKI
 
 }
