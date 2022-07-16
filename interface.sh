@@ -1,3 +1,7 @@
+#!/bin/bash
+source script_V2.sh
+
+
 INTERFACE () {
    echo -e "\n1 - Criar backup locais\n2 - Restaurar configs ubuntu\
    \n3 - Download programas ubuntu"
