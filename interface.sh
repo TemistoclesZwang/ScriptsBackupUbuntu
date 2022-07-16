@@ -1,5 +1,4 @@
 #!/bin/bash
-source script_V2.sh
 
 
 INTERFACE () {
