@@ -26,7 +26,7 @@
 * typora (melhor editor de markdown)
 * open shot (editor de video)
 
-⛔*As configurações do git e vscode não são restauradas automáticamente por enquanto. Somente backup*
+⛔*As configurações do git e vscode não são restauradas automaticamente por enquanto. Somente backup*
 
 ---
 
