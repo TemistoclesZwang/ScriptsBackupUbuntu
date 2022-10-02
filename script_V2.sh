@@ -76,6 +76,15 @@ DOWNLOADS (){
    APT google-chrome-stable -y
    APT gnome-tweaks
 
+#pomotroid
+   wget https://github.com/Splode/pomotroid/releases/download/v0.13.0/pomotroid-0.13.0-linux.deb -y
+   sudo dpkg -i pomotroid-0.13.0-linux.deb
+
+#foxit reader
+   wget http://cdn01.foxitsoftware.com/pub/foxit/reader/desktop/linux/2.x/2.4/en_us/FoxitReader.enu.setup.2.4.4.0911.x64.run.tar.gz
+   tar xzvf FoxitReader*.tar.gz
+   sudo chmod a+x FoxitReader*.run
+   sudo ./FoxitReader*.run
 
    sudo add-apt-repository ppa:openshot.developers/ppa
    sudo apt update
