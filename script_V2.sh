@@ -24,17 +24,17 @@ BKP_GIT_AND_BASH(){ #bash,git,terminal
 }
 BKP_DCONF(){ #ubuntu user configs
    cd ~
-   dconf dump / > minhasSettings.dconf
+   dconf dump / > minhasSettings_$(date +%Y-%m-%d_%H-%M-%S).dconf
    cp minhasSettings.dconf Desktop/
 }
 
 BKP_EXTENSIONS_UBUNTU(){ 
-   cd /home/temis_zwang/.local/share/gnome-shell
+   cd /home/$USER/.local/share/gnome-shell
    cp -r extensions/ Desktop/
 }
 
 BKP_ANKI(){
-   cd /home/temis_zwang/.local/share/
+   cd /home/$USER/.local/share/
    cp -r Anki2/ Desktop/
 }
 
@@ -61,20 +61,34 @@ RESTAURAR_CONFIG_UBUNTU (){
 
 # download programas
 DOWNLOADS (){
-   SNAP vlc -y 
-   SNAP code --classic -y
+   SNAP vlc --classic -y 
+   SNAP code --classic
    SNAP pomotroid -y
    SNAP discord -y
    SNAP telegram-desktop -y
    SNAP gnome-system-monitor -y
 
+#espelhar tela android
+   APT scrcpy -y
+   
+#pulse effects
+   flatpak install --user https://flathub.org/repo/appstream/com.github.wwmm.pulseeffects.flatpakref
+   APT flatpak -y
    APT gparted -y
    APT obs-studio -y
    APT flameshot -y
    APT gnome-usage -y
    APT unrar -y
-   APT google-chrome-stable -y
+   APT git -y
+#liberar extensões no site gnome extensions	
+   APT chrome-gnome-shell -y
+   #APT google-chrome-stable -y
    APT gnome-tweaks
+   APT python3-pip
+
+
+#abrir vscode no menu de contexto
+wget -qO- https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/install.sh | bash
 
 #pomotroid
    wget https://github.com/Splode/pomotroid/releases/download/v0.13.0/pomotroid-0.13.0-linux.deb -y
@@ -86,18 +100,41 @@ DOWNLOADS (){
    sudo chmod a+x FoxitReader*.run
    sudo ./FoxitReader*.run
 
+#openshot
    sudo add-apt-repository ppa:openshot.developers/ppa
    sudo apt update
    APT openshot-qt python3-openshot
 
+#typora
    wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
    sudo add-apt-repository 'deb https://typora.io/linux ./'
    sudo apt update
    APT typora
 
+#anki
+wget https://github.com/ankitects/anki/releases/download/2.1.60/anki-2.1.60-linux-qt6.tar.zst
+sudo apt install libxcb-xinerama0
+tar xaf ./anki-2.1.60-linux-qt6.tar.zst
+cd anki-2.1.60-linux-qt6
+sudo ./install.sh
+
+
    echo -e "\n\033[1;30mBackup realizado com sucesso"
-   echo -e "\n\033[1;36mAnki precisa ser instalado manualmente em: \n ->  https://docs.ankiweb.net/platform/linux/installing.html"
+   echo -e "\n\033[1;36mPastas para pegar do backup: .local/share lá dentro pegar /icons, /aplications, /todosGnomes, /nautilus, /anki2 pegar tbm /config ver o que tem de importante e NAO pegar a do chrome"
+   echo -e "\n\033[1;36mPOMOTROID precisa ser instalado manualmente em: \n ->  https://github.com/Splode/pomotroid/releases"
 }
+
+#chrome
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install google-chrome-stable
+
+#para remover o chrome
+#sudo apt-get remove google-chrome-stable
+
+#brave
+sudo snap install brave
 
 INTERFACE () {
    echo -e "\n1 - Criar backup locais\n2 - Restaurar configs ubuntu\
@@ -123,5 +160,4 @@ INTERFACE
 
 # .configuração intelijj e vscode e github
 #compilar código fonte foxitReader
-#instalar git
 #draw.Io ou whismical
