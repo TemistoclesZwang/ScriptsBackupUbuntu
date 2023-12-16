@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 SNAP() {
    sudo snap install $1
 }
@@ -67,6 +66,8 @@ DOWNLOADS (){
    SNAP discord -y
    SNAP telegram-desktop -y
    SNAP gnome-system-monitor -y
+   SNAP insomnia -y
+   SNAP brave -y
 
 #espelhar tela android
    APT scrcpy -y
@@ -80,18 +81,24 @@ DOWNLOADS (){
    APT gnome-usage -y
    APT unrar -y
    APT git -y
-#liberar extensões no site gnome extensions	
    APT chrome-gnome-shell -y
    #APT google-chrome-stable -y
    APT gnome-tweaks
    APT python3-pip
+#comunicação SSH
+   APT openssh-server -y
+  #fazer conexão ssh
+	#sudo service ssh start
+	#depois ir no nautilus e digitar ssh://ipDestino
+	#inserir login e senha do computador de destino
+	#liberar extensões no site gnome extensions	
 
 
 #abrir vscode no menu de contexto
 wget -qO- https://raw.githubusercontent.com/harry-cpp/code-nautilus/master/install.sh | bash
 
 #pomotroid
-   wget https://github.com/Splode/pomotroid/releases/download/v0.13.0/pomotroid-0.13.0-linux.deb -y
+   wget https://github.com/Splode/pomotroid/releases/download/v0.13.0/pomotroid-0.13.0-linux.deb
    sudo dpkg -i pomotroid-0.13.0-linux.deb
 
 #foxit reader
@@ -118,6 +125,11 @@ tar xaf ./anki-2.1.60-linux-qt6.tar.zst
 cd anki-2.1.60-linux-qt6
 sudo ./install.sh
 
+#Node
+APT nodejs
+APT npm
+npm install -g typescript
+
 
    echo -e "\n\033[1;30mBackup realizado com sucesso"
    echo -e "\n\033[1;36mPastas para pegar do backup: .local/share lá dentro pegar /icons, /aplications, /todosGnomes, /nautilus, /anki2 pegar tbm /config ver o que tem de importante e NAO pegar a do chrome"
@@ -133,8 +145,6 @@ sudo apt-get install google-chrome-stable
 #para remover o chrome
 #sudo apt-get remove google-chrome-stable
 
-#brave
-sudo snap install brave
 
 INTERFACE () {
    echo -e "\n1 - Criar backup locais\n2 - Restaurar configs ubuntu\
